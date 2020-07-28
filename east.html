@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cockaigne | Eastern India</title>
+	<link rel="stylesheet" type="text/css" href="C:\Users\anishi\Desktop\cockaigne\CSS\bootstrap.css">
+	<style type="text/css">
+		.crop-img {
+  			max-height:150px;
+  			max-width:100%;
+ 			margin-bottom: 10px;
+		}
+
+		.large-img {
+  			max-width:100%;
+  			margin-top: 10px;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<h1 style="margin: 30px;">Eastern India</h1>
+	<div class="row" style="margin: 30px;">
+			<div class="col-md-3">
+				<img id="image1" 
+				 class="crop-img" src="C:\Users\anishi\Desktop\cockaigne\photos\Kangchenjunga.jpg" alt="Kangchenjunga"/> 
+			</div>
+			<div class="col-md-3">
+				<img id="image2" class="crop-img" src="C:\Users\anishi\Desktop\cockaigne\photos\SelaPass.jpg" alt="Sela SelaPass"/> 
+			</div>
+			<div class="col-md-3">
+				<img id="image3" class="crop-img" src="C:\Users\anishi\Desktop\cockaigne\photos\kamakhya.jpg" alt="kamakhya"/> 
+			</div>
+			<div class="col-md-3">
+				<img id="image4" class="crop-img" src="C:\Users\anishi\Desktop\cockaigne\photos\nathula.jpg" alt="nathula pass"/> 
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1">
+				<button id="backward">&lt;</button>
+			</div>
+			<div class="col-md-10">
+				<img id="bigImage" class="large-img" src="C:\Users\anishi\Desktop\cockaigne\photos\Kangchenjunga.jpg" alt="Kangchenjunga"/> 
+			</div>
+			<div class="col-md-1">
+				<button id="forward">&gt;</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var paused = false;
+		$(".crop-img").click(function(){
+			$("#bigImage").attr('src', 
+				$(this).attr('src'));
+		});
+		var counter = 1;
+		$("#image"+counter).click();
+		$("#backward").click(function (){
+			counter = counter - 1;
+			if(counter < 1){
+				counter = 4;
+			}
+			$("#image"+counter).click();
+		});
+		$("#forward").click(function (){
+			counter = counter + 1;
+			if(counter > 4){
+				counter = 1;
+			}
+			$("#image"+counter).click();
+		});
+
+		$("#bigImage").click(function (){
+			paused = !paused;
+		});
+
+		setInterval(function (){
+			if(!paused){
+				$("#forward").click();
+			};
+		}, 3000);
+	</script>
+</body>
+</html>
